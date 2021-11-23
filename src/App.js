@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { render } from "react-dom"
-import Meme from "./Meme"
+import Meme from "./meme"
 import axios from "axios"
 
 class App extends Component {
