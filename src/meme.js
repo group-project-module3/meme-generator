@@ -1,5 +1,4 @@
 import React from "react"
-import "./App.css"
 
 function Meme(props) {
     return (
@@ -39,4 +38,4 @@ function Meme(props) {
     )
 }
 
-export default Memetouch
+export default Meme
