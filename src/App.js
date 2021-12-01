@@ -12,7 +12,7 @@ class App extends Component {
             topInput:"",
             bottomInput:"",
             currentMeme: {},
-            test:[] //github test - Jose
+            test:[1, 2, 3] //github test - Jose
         }
         
         this.handleClick = this.handleClick.bind(this)
