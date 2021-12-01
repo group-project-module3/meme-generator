@@ -11,7 +11,8 @@ class App extends Component {
             dataArr: [],
             topInput:"",
             bottomInput:"",
-            currentMeme: {}
+            currentMeme: {},
+            test:[] //github test - Jose
         }
         
         this.handleClick = this.handleClick.bind(this)
