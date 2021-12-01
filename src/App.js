@@ -2,12 +2,12 @@ import React, { Component } from "react"
 import { render } from "react-dom"
 import Meme from "./meme"
 import axios from "axios"
+import Registered_meme from "./Registered_meme"
 
 class App extends Component {
     constructor() {
         super() //used to call the constructor of its parent class - required to access variables of parent class
         this.state = {
-            inputs:[],
             dataArr: [],
             topInput:"",
             bottomInput:"",
@@ -20,6 +20,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        //Get Meme API
         axios.get("https://api.imgflip.com/get_memes")
             .then(res => {
                 // console.log(res.data.data.memes) 
@@ -44,7 +45,6 @@ handleClick(){
 }
 
 inputChange(event){
-    // event.preventDefault()
     const { name, value } = event.target
     this.setState({
         [ name ] : value
@@ -68,7 +68,7 @@ render() {
                 topValue={this.state.topInput} 
                 bottomValue={this.state.bottomInput} 
                 change={this.inputChange}
-                input={this.input}
+                
                 />
                 <button onClick={this.handleClick}>Refresh</button>
              

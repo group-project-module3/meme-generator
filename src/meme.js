@@ -6,27 +6,27 @@ function Meme(props) {
             <form onSubmit = {(e) => {
                 e.preventDefault()
             }}>
-            <input
-            type ="text"
-            className="input1"
-            name={props.topName}
-            value={props.topValue}
-            onChange={props.change}
-            />
+                <input
+                type ="text"
+                className="input1"
+                name={props.topName}
+                value={props.topValue}
+                onChange={props.change}
+                />
+
+                <br/>
+
+                <input
+                type ="text"
+                className="input2"
+                name={props.bottomName}
+                value={props.bottomValue}
+                onChange={props.change}
+                />
 
             <br/>
 
-            <input
-            type ="text"
-            className="input2"
-            name={props.bottomName}
-            value={props.bottomValue}
-            onChange={props.change}
-            />
-
-        <br/>
-
-            <button style={{top:"200px"}}>Submit</button>
+                <button style={{top:"200px"}}>Submit</button>
             </form>
             <div className="container">
             <h1>{props.topValue}</h1>
