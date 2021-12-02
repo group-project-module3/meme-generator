@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { render } from "react-dom"
 import Meme from "./meme"
 import axios from "axios"
-import Registered_meme from "./Registered_meme"
+
 
 class App extends Component {
     constructor() {
