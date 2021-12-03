@@ -3,9 +3,7 @@ import React from "react"
 function Meme(props) {
     return (
         <div>
-            <form onSubmit = {(e) => {
-                e.preventDefault()
-            }}>
+            <form onSubmit={props.submit}>
             <input
             type ="text"
             className="input1"

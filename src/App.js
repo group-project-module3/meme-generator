@@ -12,12 +12,19 @@ class App extends Component {
             topInput:"",
             bottomInput:"",
             currentMeme: {},
-            test:[1, 2, 3] //github test - Jose
+            previewMeme:{
+                top:"",
+                meme:{},
+                bottom:""
+            }
+
         }
         
         this.handleClick = this.handleClick.bind(this)
         this.inputChange = this.inputChange.bind(this)
         this.input = this.input.bind(this)
+        this.handleEdit = this.handleEdit(this)
+        this.handleSubmit = this.handleSubmit(this)
     }
 
     componentDidMount() {
@@ -44,6 +51,30 @@ handleClick(){
 
 }
 
+handleEdit(){
+    this.setState(prevState => {
+        return{
+            previewMeme:{
+                top: prevState.topInput,
+                meme: prevState.currentMeme,
+                bottom: prevState.bottomInput
+            }
+        }
+    })
+}
+
+// handleSubmit(){
+//     this.setState(prevState => {
+//         return{
+//             previewMeme:{
+//                 top: prevState.topInput,
+//                 meme: prevState.currentMeme,
+//                 bottom: prevState.bottomInput
+//             }
+//         }
+//     })
+// }
+
 inputChange(event){
     // event.preventDefault()
     const { name, value } = event.target
@@ -63,6 +94,7 @@ render() {
             <div>
               
                 <Meme 
+                submit={this.handleSubmit}
                 random={this.state.currentMeme.url} 
                 topName={"topInput"}
                 bottomName={"bottomInput"}
@@ -72,6 +104,7 @@ render() {
                 input={this.input}
                 />
                 <button onClick={this.handleClick}>Refresh</button>
+                <button onClick={this.handlePreview}>Preview</button>
              
             </div>
         )
