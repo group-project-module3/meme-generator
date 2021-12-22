@@ -21,8 +21,8 @@ class Restoredmeme extends React.Component{
             <div>
                 <h1>{this.props.topName}</h1>
                 <h1>{this.props.bottomName}</h1>
-                <img src={this.state.imgUrl} alt={this.state.name} width="500px" height="500px"/>
                 <input placeholder="Edit Top Text" name="topName" value={this.state.topName} onChange={this.handleChange}/>
+                <img src={this.state.imgUrl} alt={this.state.name} width="500px" height="500px"/>
                 <input placeholder="Edit Bottom Text" name="bottomName" value={this.state.bottomName} onChange={this.handleChange}/>
                 <button onClick={() => this.props.edit(this.state.id, this.state)}>Save</button>
                 <br/>
