@@ -1,5 +1,6 @@
 import React from "react"
 
+
 class Meme extends React.Component{
     constructor(props){
         super()
@@ -11,19 +12,22 @@ class Meme extends React.Component{
             bottomName:""
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
     handleChange(e){
         //Generates preview when taping inside of inputs
         const {name , value} = e.target
         this.setState({[name]:value})
     }
+   handleClick(e){
+       this.setState({})
+   }
     render(){
         return (
             <div>
                 <h1>{this.state.topName}</h1>
                 <h1>{this.state.bottomName}</h1>
                 <img src={this.state.imgUrl} alt={this.state.imgUrl} width="500px" height="500px"/>
-                
                 <form>
                     <input
                     type ="text"
@@ -45,7 +49,7 @@ class Meme extends React.Component{
     
                 <br/>
                 </form>
-                 <button onClick = {() => this.props.saveMeme}>Save Me</button>
+                 <button onClick={() => {this.props.save(this.state)}}>Save Me</button>
                 
     
             </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { render } from "react-dom"
+// import { render } from "react-dom"
 import Meme from "./Meme"
 import axios from "axios"
 import Restoredmeme from "./Restoredmeme"
@@ -14,6 +14,8 @@ class App extends Component {
         }
         
         this.restoredMeme= this.restoredMeme.bind(this)
+        this.deleteMeme = this.deleteMeme.bind(this)
+        this.editMeme = this.editMeme.bind(this)
     }
 
     componentDidMount() {
@@ -23,11 +25,12 @@ class App extends Component {
             .then(res => {
                 // console.log(res.data.memes) 
                 this.setState ({
-                    memes :[... res.data.memes],
+                    memes:[... res.data.memes],
                 })
             })
     }
 restoredMeme(newMeme){
+    // Function passed to Save button inside Meme component, pushes Memes state into saveMeme arr
     this.setState(prevState =>{
         return{
             savedMeme: [...prevState.savedMeme, newMeme]
@@ -36,6 +39,32 @@ restoredMeme(newMeme){
 
 }
 
+deleteMeme(id){
+    //Deletes saved meme by id
+    const deletedMeme = this.state.savedMeme.filter(meme => meme.id !== id)
+    this.setState(prevState => {
+        return {
+            savedMeme : prevState.savedMeme = [...deletedMeme]
+        }
+    })
+}
+
+editMeme(id, editedMeme){
+    const edits = this.state.savedMeme.map(meme => {
+        if(meme.id === id){
+            meme.topName = editedMeme.topName
+            meme.bottomName = editedMeme.bottomName
+            return meme
+        }
+        return meme
+    })
+    // console.log(edits)
+    this.setState(prevState => {
+        return {
+            savedMeme:prevState.savedMeme = [... edits]
+        }
+    })
+}
 
 render() {
     const memeArr = this.state.memes.map(meme =><Meme
@@ -43,7 +72,7 @@ render() {
     id = {meme.id}
     name = {meme.name}
     img = {meme.url} 
-    save = {this.currentMeme}
+    save = {this.restoredMeme}
     />)
     const restoredMemes = this.state.savedMeme.map(meme => <Restoredmeme
     key ={Number(Math.floor(Math.random() * 1000000))}
@@ -51,7 +80,7 @@ render() {
     name = {meme.name}
     img={meme.imgUrl}
     topName = {meme.topName}
-    bottommName = {meme.bottomName}
+    bottomName = {meme.bottomName}
     delete = {this.deleteMeme}
     edit = {this.editMeme}
     />)
@@ -62,10 +91,12 @@ render() {
                 <div>
                     {randomMeme}
                     <button onClick={() => this.componentDidMount()}>Refresh Meme</button>
+                    
                 </div>
                 <div>
                     {restoredMemes}
                 </div>
+            
             </main>
         )
     }
