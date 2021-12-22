@@ -26,8 +26,8 @@ class Meme extends React.Component{
         return (
             <div>
                 <h1>{this.state.topName}</h1>
-                <h1>{this.state.bottomName}</h1>
                 <img src={this.state.imgUrl} alt={this.state.imgUrl} width="500px" height="500px"/>
+                <h1>{this.state.bottomName}</h1>
                 <form>
                     <input
                     type ="text"
