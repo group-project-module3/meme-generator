@@ -1,4 +1,5 @@
 import React from "react"
+import "./App.css"
 class Restoredmeme extends React.Component{
     constructor(props){
         super()
@@ -18,10 +19,12 @@ class Restoredmeme extends React.Component{
     }
      render(){
         return(
-            <div>
-                <h1>{this.props.topName}</h1>
-                <img src={this.state.imgUrl} alt={this.state.name} width="500px" height="500px"/>
-                <h1>{this.props.bottomName}</h1>
+            <div className="restored-container">
+                <div className="container">
+                <h1 className="restoredEditInputs" >{this.props.topName}</h1>
+                <img className="restoredCenterImage" src={this.state.imgUrl} alt={this.state.name}/>
+                <h1 className="restoredEditInputs" >{this.props.bottomName}</h1>
+                </div>
                 <input placeholder="Edit Top Text" name="topName" value={this.state.topName} onChange={this.handleChange}/>
                 <br/>
                 <input placeholder="Edit Bottom Text" name="bottomName" value={this.state.bottomName} onChange={this.handleChange}/>

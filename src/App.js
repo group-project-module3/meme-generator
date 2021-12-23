@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import Meme from "./Meme"
 import axios from "axios"
 import Restoredmeme from "./Restoredmeme"
+import "./App.js"
 
 
 class App extends Component {
@@ -90,7 +91,7 @@ render() {
 
                 <div>
                     {randomMeme}
-                    <button onClick={() => this.componentDidMount()}>Refresh Meme</button>
+                    <button className="centerRefreshButton" onClick={() => this.componentDidMount()}>Refresh</button>
                     
                 </div>
                 <div>

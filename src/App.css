@@ -1,0 +1,81 @@
+/* *{
+    margin:0;
+    padding:0;
+} */
+.header{
+    text-align: center;
+    font-size: 400%;
+    font-family:fantasy;
+    color:tomato;
+}
+
+.body{
+    margin: auto 10px;
+    width: auto;
+    height: 875px;
+    background-image:url("https://media.tenor.com/images/82b94dea2effc80fe80ce243fb867cf7/tenor.png")
+}
+
+/* basic set up for images and inputs - Meme.js */
+.centerImages{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height:400px;
+}
+
+.centerInputs{
+    text-align: center;
+    background-color: white;
+}
+
+input[type="text"] {
+    display: block;
+    margin : 0 auto;
+}
+
+.centerSaveButton{
+    margin: 0;
+  position: absolute;
+  top: 145%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width:5%;
+}
+
+.centerSaveButton:hover{
+    cursor: pointer;
+    background-color: sandybrown;
+}
+
+.centerRefreshButton{
+    margin: 0;
+  position: absolute;
+  top: 155%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width:5%;
+}
+
+.centerRefreshButton:hover{
+    cursor: pointer;
+    background-color: seagreen;
+}
+
+/* restoredMeme.js */
+
+.restored-container{
+    margin: auto 10px;
+    width: auto;
+    height: 700px;
+    background-color: burlywood;
+}
+
+.restoredCenterImage{
+    width: 400px;
+    height:400px;
+} 
+

@@ -1,5 +1,5 @@
 import React from "react"
-
+import "./App.css"
 
 class Meme extends React.Component{
     constructor(props){
@@ -24,13 +24,14 @@ class Meme extends React.Component{
    }
     render(){
         return (
-            <div>
-                <h1>{this.state.topName}</h1>
-                <img src={this.state.imgUrl} alt={this.state.imgUrl} width="500px" height="500px"/>
-                <h1>{this.state.bottomName}</h1>
+            <div className="body">
+                <h1 className="header">Meme Machine</h1>
+                <h1 className="centerInputs" >{this.state.topName}</h1>
+                <img className="centerImages" src={this.state.imgUrl} alt={this.state.imgUrl}/>
+                <h1 className="centerInputs">{this.state.bottomName}</h1>
 
                 <br/>
-                
+
                 <form>
                     <input
                     type ="text"
@@ -52,7 +53,7 @@ class Meme extends React.Component{
     
                 <br/>
                 </form>
-                 <button onClick={() => {this.props.save(this.state)}}>Save Me</button>
+                 <button className="centerSaveButton" onClick={() => {this.props.save(this.state)}}>Save</button>
                 
     
             </div>
