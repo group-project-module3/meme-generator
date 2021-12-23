@@ -24,7 +24,7 @@ class App extends Component {
         this.inputChange = this.inputChange.bind(this)
         this.input = this.input.bind(this)
         this.handleEdit = this.handleEdit(this)
-        this.handleSubmit = this.handleSubmit(this)
+        // this.handleSubmit = this.handleSubmit(this)
     }
 
     componentDidMount() {
@@ -106,9 +106,10 @@ render() {
                 change={this.inputChange}
                 input={this.input}
                 />
-                <button onClick={this.handleClick}>Refresh</button>
-                <button onClick={this.handlePreview}>Preview</button>
-             
+                
+                <br/>
+
+                <button onClick={this.handleClick}>Refresh</button>             
             </div>
         )
     }
