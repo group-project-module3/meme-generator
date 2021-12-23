@@ -1,0 +1,158 @@
+// import React, { Component } from "react"
+// import { render } from "react-dom"
+// import Meme from "./meme"
+// import axios from "axios"
+
+// class App extends Component {
+//     constructor() {
+//         super() 
+//         this.state = {
+//             inputs:[],
+//             dataArr: [],
+//             topInput:"",
+//             bottomInput:"",
+//             currentMeme: {},
+//             previewMeme:{
+//                 top:"",
+//                 meme:{},
+//                 bottom:""
+//             }
+
+//         }
+        
+//         this.handleClick = this.handleClick.bind(this)
+//         this.inputChange = this.inputChange.bind(this)
+//         this.input = this.input.bind(this)
+//         this.handleEdit = this.handleEdit(this)
+//         this.handleSubmit = this.handleSubmit(this)
+//     }
+
+//     componentDidMount() {
+//         axios.get("https://api.imgflip.com/get_memes")
+//             .then(res => {
+//                 console.log(res.data.data.memes) 
+//                 this.setState((prevState)=> {
+//                     return { 
+//                         dataArr: res.data.data.memes, 
+//                         random: Math.floor(Math.random() * res.data.data.memes.length),
+//                         currentMeme: res.data.data.memes[Math.floor(Math.random() * res.data.data.memes.length)]
+//                     }
+//                 })
+//             })
+//     }
+// handleClick(){
+//     this.setState(prevState =>{
+//         let random = Math.floor(Math.random() * prevState.dataArr.length)
+//         return{
+            
+//             currentMeme: prevState.dataArr[random]
+//         }
+//     })
+
+// }
+
+// handleEdit(){
+//     this.setState(prevState => {
+//         return{
+//             previewMeme:{
+//                 top: prevState.topInput,
+//                 meme: prevState.currentMeme,
+//                 bottom: prevState.bottomInput
+//             }
+//         }
+//     })
+// }
+
+// Test(){
+    
+// }
+// handleSubmit(){
+//     this.setState(prevState => {
+//         return{
+//             previewMeme:{
+//                 top: prevState.topInput,
+//                 meme: prevState.currentMeme,
+//                 bottom: prevState.bottomInput
+//             }
+//         }
+//     })
+// }
+
+// inputChange(event){
+//     event.preventDefault()
+//     const { name, value } = event.target
+//     this.setState({
+//         [ name ] : value
+//     })
+// }
+// input(event){
+// event.preventDefault()
+// this.setState(prevState => ({
+// inputs:[...prevState.inputs, `${prevState.topInput} ${prevState.bottomInput}`]
+// }))
+// }
+
+// render() {
+//         return (
+//             <div>
+              
+//                 <Meme 
+//                 submit={this.handleSubmit}
+//                 random={this.state.currentMeme.url} 
+//                 topName={"topInput"}
+//                 bottomName={"bottomInput"}
+//                 topValue={this.state.topInput} 
+//                 bottomValue={this.state.bottomInput} 
+//                 change={this.inputChange}
+//                 input={this.input}
+//                 />
+                
+//                 <br/>
+
+//                 <button onClick={this.handleClick}>Refresh</button>             
+//             </div>
+//         )
+//     }
+// }
+
+// export default App
+
+// import React from "react"
+
+// function Meme(props) {
+//     return (
+//         <div>
+//             <form onSubmit={props.submit}>
+//             <input
+//             type ="text"
+//             className="input1"
+//             name={props.topName}
+//             value={props.topValue}
+//             onChange={props.change}
+//             />
+
+//             <br/>
+
+//             <input
+//             type ="text"
+//             className="input2"
+//             name={props.bottomName}
+//             value={props.bottomValue}
+//             onChange={props.change}
+//             />
+
+//         <br/>
+
+//             <button style={{top:"200px"}}>Submit</button>
+//             </form>
+//             <div className="container">
+//             <h1>{props.topValue}</h1>
+//             <img className="imgs" src={props.random} alt={"Memes"}/>
+//             <h1>{props.bottomValue}</h1>
+//             </div>
+
+//         </div>
+//     )
+// }
+
+// export default Meme

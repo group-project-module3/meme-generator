@@ -1,116 +1,103 @@
 import React, { Component } from "react"
-import { render } from "react-dom"
-import Meme from "./meme"
+// import { render } from "react-dom"
+import Meme from "./Meme"
 import axios from "axios"
+import Restoredmeme from "./Restoredmeme"
+
 
 class App extends Component {
     constructor() {
         super() //used to call the constructor of its parent class - required to access variables of parent class
         this.state = {
-            inputs:[],
-            dataArr: [],
-            topInput:"",
-            bottomInput:"",
-            currentMeme: {},
-            previewMeme:{
-                top:"",
-                meme:{},
-                bottom:""
-            }
-
+            memes: [],
+            savedMeme:[]
         }
         
-        this.handleClick = this.handleClick.bind(this)
-        this.inputChange = this.inputChange.bind(this)
-        this.input = this.input.bind(this)
-        this.handleEdit = this.handleEdit(this)
-        // this.handleSubmit = this.handleSubmit(this)
+        this.restoredMeme= this.restoredMeme.bind(this)
+        this.deleteMeme = this.deleteMeme.bind(this)
+        this.editMeme = this.editMeme.bind(this)
     }
 
     componentDidMount() {
+        //Get Meme API
         axios.get("https://api.imgflip.com/get_memes")
+            .then(res => res.data)
             .then(res => {
-                // console.log(res.data.data.memes) 
-                this.setState((prevState)=> {
-                    return { 
-                        dataArr: res.data.data.memes, 
-                        random: Math.floor(Math.random() * res.data.data.memes.length),
-                        currentMeme: res.data.data.memes[Math.floor(Math.random() * res.data.data.memes.length)]
-                    }
+                // console.log(res.data.memes) 
+                this.setState ({
+                    memes:[... res.data.memes],
                 })
             })
     }
-handleClick(){
+restoredMeme(newMeme){
+    // Function passed to Save button inside Meme component, pushes Memes state into saveMeme arr
     this.setState(prevState =>{
-        let random = Math.floor(Math.random() * prevState.dataArr.length)
         return{
-            
-            currentMeme: prevState.dataArr[random]
+            savedMeme: [...prevState.savedMeme, newMeme]
         }
     })
 
 }
 
-handleEdit(){
+deleteMeme(id){
+    // Deletes saved meme by id
+    const deletedMeme = this.state.savedMeme.filter(meme => meme.id !== id)
     this.setState(prevState => {
-        return{
-            previewMeme:{
-                top: prevState.topInput,
-                meme: prevState.currentMeme,
-                bottom: prevState.bottomInput
-            }
+        return {
+            savedMeme : prevState.savedMeme = [...deletedMeme]
         }
     })
 }
 
-Test(){
-    
-}
-// handleSubmit(){
-//     this.setState(prevState => {
-//         return{
-//             previewMeme:{
-//                 top: prevState.topInput,
-//                 meme: prevState.currentMeme,
-//                 bottom: prevState.bottomInput
-//             }
-//         }
-//     })
-// }
-
-inputChange(event){
-    // event.preventDefault()
-    const { name, value } = event.target
-    this.setState({
-        [ name ] : value
+editMeme(id, editedMeme){
+    const edits = this.state.savedMeme.map(meme => {
+        if(meme.id === id){
+            meme.topName = editedMeme.topName
+            meme.bottomName = editedMeme.bottomName
+            return meme
+        }
+        return meme
     })
-}
-input(event){
-event.preventDefault()
-this.setState(prevState => ({
-inputs:[...prevState.inputs, `${prevState.topInput} ${prevState.bottomInput}`]
-}))
+    // console.log(edits)
+    this.setState(prevState => {
+        return {
+            savedMeme:prevState.savedMeme = [... edits]
+        }
+    })
 }
 
 render() {
+    const memeArr = this.state.memes.map(meme =><Meme
+    key = {Number(Math.floor(Math.random() * 1000000))}
+    id = {meme.id}
+    name = {meme.name}
+    img = {meme.url} 
+    save = {this.restoredMeme}
+    />)
+    const restoredMemes = this.state.savedMeme.map(meme => <Restoredmeme
+    key ={Number(Math.floor(Math.random() * 1000000))}
+    id = {meme.id}
+    name = {meme.name}
+    img={meme.imgUrl}
+    topName = {meme.topName}
+    bottomName = {meme.bottomName}
+    delete = {this.deleteMeme}
+    edit = {this.editMeme}
+    />)
+    const randomMeme = memeArr[Math.floor(Math.random() * memeArr.length)]
         return (
-            <div>
-              
-                <Meme 
-                submit={this.handleSubmit}
-                random={this.state.currentMeme.url} 
-                topName={"topInput"}
-                bottomName={"bottomInput"}
-                topValue={this.state.topInput} 
-                bottomValue={this.state.bottomInput} 
-                change={this.inputChange}
-                input={this.input}
-                />
-                
-                <br/>
+            <main>
 
-                <button onClick={this.handleClick}>Refresh</button>             
-            </div>
+                <div>
+                    {randomMeme}
+                    <button onClick={() => this.componentDidMount()}>Refresh Meme</button>
+                    
+                </div>
+                <div>
+                    {restoredMemes}
+                </div>
+            
+            </main>
         )
     }
 }
