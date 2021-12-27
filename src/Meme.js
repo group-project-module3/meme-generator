@@ -25,7 +25,7 @@ class Meme extends React.Component{
     render(){
         return (
             <div className="body">
-                <h1 className="header">Meme Machine</h1>
+                <h1 className="header">Dooo Da Meme </h1>
                 <h1 className="centerInputs" >{this.state.topName}</h1>
                 <img className="centerImages" src={this.state.imgUrl} alt={this.state.imgUrl}/>
                 <h1 className="centerInputs">{this.state.bottomName}</h1>
@@ -34,6 +34,7 @@ class Meme extends React.Component{
 
                 <form>
                     <input
+                    className="meme-input"
                     type ="text"
                     name="topName"
                     value={this.state.topName}
@@ -44,6 +45,7 @@ class Meme extends React.Component{
                     <br/>
     
                     <input
+                    className="meme-input"
                     type ="text"
                     name="bottomName"
                     value={this.state.bottomName}

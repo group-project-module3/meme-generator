@@ -20,20 +20,22 @@ class Restoredmeme extends React.Component{
      render(){
         return(
             <div className="restored-container">
-                <div className="container">
+                <div className="res-container">
                 <h1 className="restoredEditInputs" >{this.props.topName}</h1>
                 <img className="restoredCenterImage" src={this.state.imgUrl} alt={this.state.name}/>
                 <h1 className="restoredEditInputs" >{this.props.bottomName}</h1>
                 </div>
-                <input placeholder="Edit Top Text" name="topName" value={this.state.topName} onChange={this.handleChange}/>
+                <div className="res-inputs">
+                <input  placeholder="Edit Top Text" name="topName" value={this.state.topName} onChange={this.handleChange} style={{margin: "0 auto"}}/>
                 <br/>
-                <input placeholder="Edit Bottom Text" name="bottomName" value={this.state.bottomName} onChange={this.handleChange}/>
+                <input  placeholder="Edit Bottom Text" name="bottomName" value={this.state.bottomName} onChange={this.handleChange} style={{margin: "0 auto"}}/>
+                </div>
                 <br/>
                 <br/>
-                <button onClick={() => this.props.edit(this.state.id, this.state)}>Save</button>
+                <button className="res-SaveButton" onClick={() => this.props.edit(this.state.id, this.state)}>Save</button>
                 <br/>
                 <br/>
-                <button onClick={() => this.props.delete(this.state.id)}>Delete</button>
+                <button className="res-DeleteButton" onClick={() => this.props.delete(this.state.id)}>Delete</button>
 
             </div>
         )
