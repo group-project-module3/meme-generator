@@ -9,12 +9,14 @@
     color:tomato;
 }
 
+.black-background{
+    background-color: black;
+}
+
 .body{
     margin: auto 10px;
     width: auto;
     height: 875px;
-    background-color: black;
-    /* background-image:url("https://media.tenor.com/images/82b94dea2effc80fe80ce243fb867cf7/tenor.png") */
 }
 
 .centerImages{
@@ -102,6 +104,11 @@
     width:5%;
 }
 
+.res-SaveButton:hover{
+    cursor: pointer;
+    background-color: cornflowerblue;
+}
+
 .res-DeleteButton{
     margin: 0;
     position: absolute;
@@ -111,6 +118,12 @@
     transform: translate(-50%, -50%);
     width:5%;
 }
+
+.res-DeleteButton:hover{
+    cursor: pointer;
+    background-color: crimson;
+}
+
 
 .body-2{
     background-color: black;

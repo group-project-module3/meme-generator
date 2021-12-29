@@ -90,7 +90,7 @@ render() {
 
                 <div>
                     {randomMeme}
-                    <button onClick={() => this.componentDidMount()}>Refresh Meme</button>
+                    <button className="centerRefreshButton" onClick={() => this.componentDidMount()}>Refresh</button>
                     
                 </div>
                 <div>

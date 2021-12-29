@@ -24,6 +24,7 @@ class Meme extends React.Component{
    }
     render(){
         return (
+            <div className="black-background">
             <div className="body">
                 <h1 className="header">Dooo Da Meme </h1>
                 <h1 className="centerInputs" >{this.state.topName}</h1>
@@ -56,8 +57,7 @@ class Meme extends React.Component{
                 <br/>
                 </form>
                  <button className="centerSaveButton" onClick={() => {this.props.save(this.state)}}>Save</button>
-                
-    
+            </div>
             </div>
         )
     }
