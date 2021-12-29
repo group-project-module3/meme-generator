@@ -102,6 +102,11 @@
     width:5%;
 }
 
+.res-SaveButton:hover{
+cursor: pointer;
+background-color: cornflowerblue;
+}
+
 .res-DeleteButton{
     margin: 0;
     position: absolute;
@@ -110,6 +115,11 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width:5%;
+}
+
+.res-DeleteButton:hover{
+    cursor: pointer;
+    background-color: crimson;
 }
 
 .body-2{
