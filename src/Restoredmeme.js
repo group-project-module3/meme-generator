@@ -19,6 +19,7 @@ class Restoredmeme extends React.Component{
     }
      render(){
         return(
+            <div className="body-2">
             <div className="restored-container">
                 <div className="res-container">
                 <h1 className="restoredEditInputs" >{this.props.topName}</h1>
@@ -37,6 +38,7 @@ class Restoredmeme extends React.Component{
                 <br/>
                 <button className="res-DeleteButton" onClick={() => this.props.delete(this.state.id)}>Delete</button>
 
+            </div>
             </div>
         )
     }
