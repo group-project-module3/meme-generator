@@ -28,6 +28,7 @@
 .centerInputs{
     text-align: center;
     color: white;
+    font-family: cursive;
 }
 
 .meme-input[type="text"] {
